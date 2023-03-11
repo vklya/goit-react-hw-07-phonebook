@@ -23,7 +23,6 @@ export function App() {
   }, [dispatch]);
 
   const handleAddContact = ( name, number ) => {
-    console.log('name ', name);
     dispatch(fetchAddContact({name, number}));
   };
 

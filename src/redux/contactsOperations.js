@@ -25,7 +25,19 @@ export const fetchAddContact = createAsyncThunk(
         catch (error) {
             return rejectWithValue(error.message);
         }
-    }
+    },
+    {
+        condition: ({name}, { getState }) => {
+            const { contacts } = getState();
+            const normalizedName = name.toLowerCase();
+            const result = contacts.items.some(({ name }) =>{
+                return name.toLowerCase() === normalizedName;
+            })
+            if (result) {
+                alert(`${name} is already in contacts`);
+                return false;
+            }
+    }}
 );
 
 export const fetchDeleteContact = createAsyncThunk(

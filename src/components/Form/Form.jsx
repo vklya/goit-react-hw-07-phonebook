@@ -68,7 +68,6 @@ export default function Form({ onSubmit }) {
         <button
           type="submit"
           className={css.button}
-          disabled={!name || !number}
         >
           Add contact
         </button>
