@@ -4,8 +4,9 @@ export const getContacts = ({ contacts, filter }) => {
     const { items } = contacts;
     if (!filter) return items;
     const normalizedFilter = filter.toLowerCase();
-
-    return items.filter(({ name }) =>
+    
+    const result = items.filter(({ name }) =>
         name.toLowerCase().includes(normalizedFilter),
     );
+    return result;
 };
