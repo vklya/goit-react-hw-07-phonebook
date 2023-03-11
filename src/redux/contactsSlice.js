@@ -29,11 +29,11 @@ const contactsSlice = createSlice({
             .addCase(fetchAddContact.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
                 const contacts = state.items;
-                console.log(contacts);
-                if (contacts.find(contact => contact.name.toLowerCase() === payload.name.toLowerCase())) {
-                    alert(`${payload.name} is already in contacts`)
+                if (contacts.some(contact => contact.name.toLowerCase() === payload.name.toLowerCase())) {
+                    alert(`${payload.name} is already in contacts`);
                     return;
-                } else contacts.push(payload);
+                }
+                contacts.push(payload);
             })
             .addCase(fetchAddContact.rejected, handleRejected)
             .addCase(fetchDeleteContact.pending, handlePending)
